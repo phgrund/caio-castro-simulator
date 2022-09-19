@@ -57,14 +57,14 @@ module.exports = configure(function (/* ctx */) {
         node: 'node16'
       },
 
-      vueRouterMode: 'history', // available values: 'hash', 'history'
+      vueRouterMode: process.env.NODE_ENV === 'production' ? 'hash' : 'history', // available values: 'hash', 'history'
       // vueRouterBase,
       // vueDevtools,
       // vueOptionsAPI: false,
 
       // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
 
-      publicPath: '/'
+      publicPath: process.env.NODE_ENV === 'production' ? '/caio-castro-simulator' : '/'
       // analyze: true,
       // env: {},
       // rawDefine: {}
@@ -206,6 +206,10 @@ module.exports = configure(function (/* ctx */) {
 
       // extendBexScriptsConf (esbuildConf) {}
       // extendBexManifestJson (json) {}
+    },
+
+    bin: {
+      linuxAndroidStudio: '/home/phgrund/Applications/android-studio/bin/studio.sh'
     }
   }
 })
